@@ -2,8 +2,11 @@
 
 namespace App\Exceptions;
 
+use App\services\ErrorLogging\ErrorLoggingService;
+use http\Client\Request;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use function Laravel\Prompts\error;
 
 class Handler extends ExceptionHandler
 {
@@ -44,5 +47,9 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+    public function render($request,Throwable $e){
+        ErrorLoggingService::log($e);
+        return response()->json(['error'=>$e->getMessage()], 500);
     }
 }

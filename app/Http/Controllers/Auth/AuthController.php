@@ -8,7 +8,10 @@ use App\Helpers\ResponseHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\RegisterRequest;
 use App\Services\Auth\AuthService;
+use App\services\ErrorLogging\ErrorLoggingService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
+use Throwable;
 
 class AuthController extends Controller
 {
@@ -25,11 +28,15 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         try {
+//            dd(decrypt($request->key));
+
+//            Cache::put('token', $token, 60);
             $dto = new LoginDTO($request->email, $request->password);
             $token = $this->authService->login($dto);
 
             return ResponseHelper::success(['token' => $token], 'Login successful');
         } catch (Throwable $e) {
+            ErrorLoggingService::log($e);
             return ResponseHelper::error('Login failed. Please check your credentials.');
         }
     }
