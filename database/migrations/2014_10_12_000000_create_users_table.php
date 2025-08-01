@@ -15,10 +15,19 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('phone')->nullable()->unique();
             $table->string('password');
+            $table->string('profile_image')->nullable();
+            $table->boolean('is_active')->default(true);
+            $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
+            $table->string('skills')->nullable();
+            $table->string('documents')->nullable();
+            $table->string('resume')->nullable();
+            $table->string('contract')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 
