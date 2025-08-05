@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{
+use App\Http\Controllers\{Announcement\AnnouncementController,
     Attendance\AttendanceController,
     Auth\AuthController,
     LeaveRequests\LeaveRequestController,
@@ -8,8 +8,7 @@ use App\Http\Controllers\{
     Payslip\PayslipController,
     PerformanceReview\PerformanceReviewController,
     Task\TaskController,
-    User\UserController
-};
+    User\UserController};
 use Illuminate\Support\Facades\Route;
 
 Route::post('/register', [AuthController::class, 'register']);
@@ -65,5 +64,8 @@ Route::middleware(['auth:api'])->group(function () {
         Route::get('/list-performance-review', [PerformanceReviewController::class, 'index']);
 
     });
+
+    Route::get('announcements', [AnnouncementController::class, 'index']);
+    Route::post('announcements', [AnnouncementController::class, 'store']);
 
 });

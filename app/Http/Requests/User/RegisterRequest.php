@@ -30,13 +30,5 @@ class RegisterRequest extends FormRequest
             'role' => 'required|string|exists:roles,name',
         ];
     }
-    public function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
-    {
-        throw new \Illuminate\Validation\ValidationException($validator, response()->json([
-            'status' => false,
-            'message' => 'Validation failed',
-            'errors' => $validator->errors()
-        ], 422));
-    }
 
 }
