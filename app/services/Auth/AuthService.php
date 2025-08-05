@@ -40,8 +40,12 @@ class AuthService
     {
         try {
 
-            $user = User::create($dto->toArray());
+//            $user = User::create($dto->toArray());
 
+            $data = $dto->toArray();
+            $data['password'] = Hash::make($dto->password);
+
+            $user = User::create($data);
             $user->assignRole($dto->role);
 
             dispatch(new SendWelcomeEmail($user));

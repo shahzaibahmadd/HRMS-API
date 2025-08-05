@@ -20,6 +20,7 @@ class UserService
 
             $data['password'] = Hash::make($dto->password);
 
+
             $user = User::create($data);
             $user->assignRole($dto->role);
 

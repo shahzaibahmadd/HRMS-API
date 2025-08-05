@@ -2,9 +2,12 @@
 
 namespace App\Exceptions;
 
+use App\Helpers\ResponseHelper;
 use App\services\ErrorLogging\ErrorLoggingService;
 use http\Client\Request;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Validation\ValidationException;
 use Throwable;
 use function Laravel\Prompts\error;
 
@@ -49,7 +52,32 @@ class Handler extends ExceptionHandler
         });
     }
     public function render($request,Throwable $e){
+
+        if ($e instanceof ValidationException) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Validation failed',
+                'errors' => $e->errors(),
+            ], 422);
+        }
+
+
+        if ($e instanceof AuthenticationException) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Unauthenticated.',
+                'data' => null
+            ], 401);
+        }
+
+
         ErrorLoggingService::log($e);
-        return response()->json(['error'=>$e->getMessage()], 500);
+
+        return response()->json([
+            'status' => false,
+            'message' => 'Something went wrong.',
+            'data' => null
+        ], 500);
     }
+
 }
