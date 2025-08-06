@@ -54,10 +54,12 @@ class RoleMiddleware
                     }
                 }
 
-                return response()->json([
-                    'status' => false,
-                    'message' => 'Unauthorized access.'.$user,
-                ], 403);
+//                return response()->json([
+//                    'status' => false,
+//                    'message' => 'Unauthorized access.'.$user,
+//                ], 403);
+                return $next($request);
+
             }
 
 

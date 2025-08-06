@@ -25,6 +25,9 @@ Route::middleware(['auth:api'])->group(function () {
         // User Management
         Route::apiResource('/users', UserController::class)->except(['show']);
         Route::get('/list-users', [UserController::class, 'index'])->name('users.list');
+        Route::post('/update-user/{user}', [UserController::class, 'update'])->name('users.update');
+        Route::post('/delete-user/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+        Route::post('restore-user/{user}', [UserController::class, 'restore'])->name('users.restore');
 
         // Attendance
         Route::post('/attendance/check-in', [AttendanceController::class, 'checkIn'])->name('attendance.checkIn');

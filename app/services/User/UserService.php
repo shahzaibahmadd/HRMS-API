@@ -60,7 +60,22 @@ class UserService
             ])
             ->thenReturn();
 
+        $perPage = $request->input('per_page', 100);
+        return $query->paginate($perPage);
+    }
+    public function listDeletedUsers(Request $request)
+    {
+        $query = User::onlyTrashed()->with('roles');
+
+        $query = app(Pipeline::class)
+            ->send($query)
+            ->through([
+                fn($query) => (new UserFilter($request))->apply($query),
+            ])
+            ->thenReturn();
+
         $perPage = $request->input('per_page', 10);
         return $query->paginate($perPage);
     }
+
 }

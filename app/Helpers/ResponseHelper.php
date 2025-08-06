@@ -10,7 +10,7 @@ class ResponseHelper
             'status' => true,
             'message' => $message,
             'data' => $data
-        ], $code);
+        ],  (int)$code);
     }
 
     public static function error($message, $code = 400)
@@ -19,7 +19,7 @@ class ResponseHelper
             'status' => false,
             'message' => $message,
             'data' => null
-        ], $code);
+        ],  (int)$code);
     }
 
 
