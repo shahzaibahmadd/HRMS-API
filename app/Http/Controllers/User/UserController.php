@@ -28,7 +28,7 @@ class UserController extends Controller
 
     public function update(UpdateUserRequest $request, User $user)
     {
-        $dto = new UserDTO($request->validated());
+        $dto = new UserDTO($request,$user);
         $updated = $this->userService->update($user, $dto);
         return ResponseHelper::success(new UserResource($updated), 'User updated');
     }
@@ -51,8 +51,41 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
+        $authUser = auth()->user();
+
+        if ($authUser->id === $user->id) {
+            return ResponseHelper::error('You cannot delete yourself.');
+        }
+        if ($authUser->hasRole('Admin') && $user->hasRole('Admin')) {
+            return ResponseHelper::error('Admins cannot delete other Admins.');
+        }
+
+
         $user->delete();
         return ResponseHelper::success(null, 'User deleted');
+    }
+    public function deletedUsers(Request $request)
+    {
+        $users = $this->userService->listDeletedUsers($request);
+
+        return ResponseHelper::success(
+            UserResource::collection($users)->response()->getData(true),
+            'Deleted users fetched successfully.'
+        );
+    }
+
+    public function restore($id)
+    {
+        $user = User::withTrashed()->findOrFail($id);
+
+        if (!$user->trashed()) {
+
+            return ResponseHelper::error( 'User is already active.');
+        }
+
+        $user->restore();
+
+        return ResponseHelper::success( 'User restored');
     }
 
 }
