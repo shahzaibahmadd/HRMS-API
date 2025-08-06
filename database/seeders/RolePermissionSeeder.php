@@ -12,7 +12,7 @@ use Spatie\Permission\PermissionRegistrar;
 use App\Models\User;
 use App\Models\Task;
 
-class RolePermissionSeeder extends Seeder
+class   RolePermissionSeeder extends Seeder
 {
     public function run(): void
     {

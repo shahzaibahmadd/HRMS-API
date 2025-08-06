@@ -26,9 +26,7 @@ class LeaveRequestController extends Controller
     {
         $dto = new CreateLeaveRequestDTO(
             auth()->id(),
-            $request->start_date,
-            $request->end_date,
-            $request->reason
+           ...$request->toarray()
         );
 
         $leave = $this->leaveService->create($dto);
