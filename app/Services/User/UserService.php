@@ -1,6 +1,6 @@
 <?php
 
-namespace App\services\User;
+namespace App\Services\User;
 
 use App\DTOs\User\UserDTO;
 use App\Filters\User\UserFilter;
