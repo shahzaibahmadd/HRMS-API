@@ -47,6 +47,8 @@ Route::middleware(['auth:api'])->group(function () {
             Route::get('/list', [PayrollController::class, 'index'])->name('payroll.list');
             Route::post('/', [PayrollController::class, 'store'])->name('payroll.store');
             Route::get('/{userId}', [PayrollController::class, 'show'])->name('payroll.show');
+            Route::post('/delete/{payrollId}', [PayrollController::class, 'destroy'])->name('payroll.destroy');
+            Route::put('/update/{payrollId}', [PayrollController::class, 'update'])->name('payroll.update');
         });
 
 

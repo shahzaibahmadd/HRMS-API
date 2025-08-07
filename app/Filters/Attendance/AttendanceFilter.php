@@ -10,20 +10,21 @@ class AttendanceFilter extends BaseFilter
 
     public function apply(Builder $query): Builder
     {
-        if ($userId = $this->request->get('user_id')) {
-            $query->where('user_id', $userId);
+        if ($this->request->filled('user_id')) {
+            $query->where('user_id', $this->request->user_id);
         }
 
-        if ($date = $this->request->get('date')) {
-            $query->whereDate('check_in', $date);
+        if ($this->request->filled('date')) {
+            $query->whereDate('check_in', $this->request->date);
         }
 
-        if ($role = $this->request->get('role')) {
-            $query->whereHas('user.roles', function ($q) use ($role) {
-                $q->where('name', $role);
+        if ($this->request->filled('role')) {
+            $query->whereHas('user.roles', function ($q) {
+                $q->where('name', $this->request->role);
             });
         }
 
         return $query;
     }
+
 }

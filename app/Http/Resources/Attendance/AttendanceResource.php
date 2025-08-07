@@ -14,16 +14,27 @@ class AttendanceResource extends JsonResource
      */
     public function toArray($request): array
     {
+//        return [
+//            'id' => $this->id,
+//            'check_in' => $this->check_in,
+//            'check_out' => $this->check_out,
+//            'worked_minutes' => $this->worked_minutes,
+//            'user' => [
+//                'id' => $this->user->id,
+//                'name' => $this->user->name,
+//                'email' => $this->user->email,
+//            ]
+//        ];
         return [
             'id' => $this->id,
             'check_in' => $this->check_in,
             'check_out' => $this->check_out,
             'worked_minutes' => $this->worked_minutes,
-            'user' => [
-                'id' => $this->user->id,
-                'name' => $this->user->name,
-                'email' => $this->user->email,
-            ]
+            'user' => $this->whenLoaded('user', [
+                'id' => $this->user?->id,
+                'name' => $this->user?->name,
+                'email' => $this->user?->email,
+            ]),
         ];
     }
 }
