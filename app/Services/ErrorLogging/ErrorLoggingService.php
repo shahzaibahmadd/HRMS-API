@@ -1,6 +1,6 @@
 <?php
 
-namespace App\services\ErrorLogging;
+namespace App\Services\ErrorLogging;
 
 use App\Models\error_logs;
 use Throwable;

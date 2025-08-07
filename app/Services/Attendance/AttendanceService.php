@@ -1,6 +1,6 @@
 <?php
 
-namespace App\services\Attendance;
+namespace App\Services\Attendance;
 
 
 
