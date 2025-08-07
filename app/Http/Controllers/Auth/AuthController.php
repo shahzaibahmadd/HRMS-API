@@ -9,7 +9,7 @@ use App\Helpers\ResponseHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\RegisterRequest;
 use App\Http\Resources\Auth\AuthResource;
-use App\Services\Auth\AuthService;
+use App\services\Auth\AuthService;
 use App\services\ErrorLogging\ErrorLoggingService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
