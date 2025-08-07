@@ -3,6 +3,7 @@
 namespace App\services\Payroll;
 
 use App\DTOs\Payroll\CreatePayrollDTO;
+use App\DTOs\Payroll\UpdatePayrollDTO;
 use App\Filters\payroll\PayrollFilter;
 use App\Models\Payroll;
 use App\services\ErrorLogging\ErrorLoggingService;
@@ -39,6 +40,30 @@ class PayrollService
         }catch (Throwable $e) {
             ErrorLoggingService::log($e);
             return collect();
+        }
+    }
+    public function update(UpdatePayrollDTO $dto)
+    {
+        try {
+            $payroll = Payroll::find($dto->payroll_id);
+
+            if (!$payroll) {
+                return null;
+            }
+
+            $payroll->update([
+                'user_id' => $dto->user_id,
+                'basic_pay' => $dto->basic_pay,
+                'bonuses' => $dto->bonuses,
+                'deductions' => $dto->deductions,
+                'net_salary' => $dto->net_salary,
+                'pay_date' => $dto->pay_date,
+            ]);
+
+            return $payroll;
+        } catch (\Exception $e) {
+            app(ErrorLoggingService::class)->log($e);
+            return null;
         }
     }
 }
