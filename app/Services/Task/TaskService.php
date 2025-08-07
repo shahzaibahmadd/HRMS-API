@@ -5,7 +5,7 @@ use app\DTOs\Task\TaskDTO;
 use App\DTOs\Task\UpdateTaskDTO;
 use App\Filters\Task\TaskFilter;
 use App\Http\Requests\Task\CreateTaskRequest;
-use App\models\Task;
+use App\Models\Task;
 
 use App\Services\ErrorLogging\ErrorLoggingService;
 use Illuminate\Http\Request;
