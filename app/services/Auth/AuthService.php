@@ -32,7 +32,7 @@ class AuthService
 
         } catch (Throwable $e) {
             ErrorLoggingService::log($e);
-            throw $e;
+            return ResponseHelper::error(500, $e);
         }
     }
 
@@ -54,7 +54,7 @@ class AuthService
 
         } catch (Throwable $e) {
             ErrorLoggingService::log($e);
-            throw $e;
+            return ResponseHelper::error(500, $e);
         }
     }
 
