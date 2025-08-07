@@ -10,8 +10,8 @@ use App\Http\Requests\Payroll\CreatePayrollRequest;
 use App\Http\Requests\Payroll\UpdatePayrollRequest;
 use App\Http\Resources\Payroll\PayrollResource;
 use App\Models\Payroll;
-use App\services\ErrorLogging\ErrorLoggingService;
-use App\services\Payroll\PayrollService;
+use App\Services\ErrorLogging\ErrorLoggingService;
+use App\Services\Payroll\PayrollService;
 use Illuminate\Http\Request;
 
 class PayrollController extends Controller

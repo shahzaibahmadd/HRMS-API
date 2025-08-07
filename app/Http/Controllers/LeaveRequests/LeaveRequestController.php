@@ -13,8 +13,8 @@ use App\Http\Requests\LeaveRequests\StoreLeaveRequest;
 use App\Http\Requests\LeaveRequests\UpdateLeaveStatusRequest;
 use App\Http\Resources\LeaveRequests\LeaveRequestResource;
 use App\Models\LeaveRequest;
-use App\services\ErrorLogging\ErrorLoggingService;
-use App\services\LeaveRequests\LeaveRequestService;
+use App\Services\ErrorLogging\ErrorLoggingService;
+use App\Services\LeaveRequests\LeaveRequestService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

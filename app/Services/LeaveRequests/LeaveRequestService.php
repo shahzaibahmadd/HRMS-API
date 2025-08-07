@@ -1,6 +1,6 @@
 <?php
 
-namespace App\services\LeaveRequests;
+namespace App\Services\LeaveRequests;
 
 
 use App\DTOs\LeaveRequests\CreateLeaveRequestDTO;
@@ -8,7 +8,7 @@ use App\DTOs\LeaveRequests\UpdateLeaveStatusDTO;
 use App\Filters\LeaveRequests\LeaveRequestFilter;
 use App\Models\LeaveRequest;
 
-use App\Pipelines\LeaveRequests\LeaveRequestPipeline;
+
 use App\Services\ErrorLogging\ErrorLoggingService;
 use Illuminate\Http\Request;
 use Illuminate\Pipeline\Pipeline;

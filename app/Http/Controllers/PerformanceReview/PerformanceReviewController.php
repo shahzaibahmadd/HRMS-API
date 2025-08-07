@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PerformanceReview\PerformanceReviewRequest;
 use App\Http\Resources\PerformanceReview\PerformanceReviewResource;
 use App\Models\PerformanceReview;
-use App\services\PerformanceReview\PerformanceReviewService;
+use App\Services\PerformanceReview\PerformanceReviewService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

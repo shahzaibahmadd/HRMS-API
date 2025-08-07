@@ -1,12 +1,12 @@
 <?php
 
-namespace App\services\Payroll;
+namespace App\Services\Payroll;
 
 use App\DTOs\Payroll\CreatePayrollDTO;
 use App\DTOs\Payroll\UpdatePayrollDTO;
 use App\Filters\payroll\PayrollFilter;
 use App\Models\Payroll;
-use App\services\ErrorLogging\ErrorLoggingService;
+use App\Services\ErrorLogging\ErrorLoggingService;
 use Illuminate\Http\Request;
 use Illuminate\Pipeline\Pipeline;
 use Throwable;

@@ -4,7 +4,7 @@ namespace App\Helpers;
 
 use App\DTOs\API\ApiDTOs;
 use App\Models\ApiLog;
-use App\services\ErrorLogging\ErrorLoggingService;
+use App\Services\ErrorLogging\ErrorLoggingService;
 
 
 class ApiHelper
