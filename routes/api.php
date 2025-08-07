@@ -23,7 +23,7 @@ Route::middleware(['auth:api'])->group(function () {
     Route::middleware('role')->group(function () {
 
         // User Management
-        Route::apiResource('/users', UserController::class)->except(['show']);
+
         Route::get('/list-users', [UserController::class, 'index'])->name('users.list');
         Route::post('/update-user/{user}', [UserController::class, 'update'])->name('users.update');
         Route::post('/delete-user/{user}', [UserController::class, 'destroy'])->name('users.destroy');
