@@ -27,7 +27,7 @@ Route::middleware(['auth:api'])->group(function () {
         Route::get('/list-users', [UserController::class, 'index'])->name('users.list');
         Route::post('/update-user/{user}', [UserController::class, 'update'])->name('users.update');
         Route::post('/delete-user/{user}', [UserController::class, 'destroy'])->name('users.destroy');
-        Route::post('restore-user/{user}', [UserController::class, 'restore'])->name('users.restore');
+        Route::post('/restore-user/{user}', [UserController::class, 'restore'])->name('users.restore');
 
         // Attendance
         Route::post('/attendance/check-in', [AttendanceController::class, 'checkIn'])->name('attendance.checkIn');
@@ -70,7 +70,7 @@ Route::middleware(['auth:api'])->group(function () {
 
     });
 
-    Route::get('announcements', [AnnouncementController::class, 'index'])->name('announcements.index');
-    Route::post('announcements', [AnnouncementController::class, 'store'])->name('announcements.store');
+    Route::get('/announcements', [AnnouncementController::class, 'index'])->name('announcements.index');
+    Route::post('/announcements', [AnnouncementController::class, 'store'])->name('announcements.store');
 
 });
