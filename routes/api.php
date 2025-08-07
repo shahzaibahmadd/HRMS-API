@@ -60,6 +60,8 @@ Route::middleware(['auth:api'])->group(function () {
 
         Route::post('/create-task', [TaskController::class, 'store'])->name('task.store');
         Route::get('/list-task', [TaskController::class, 'index'])->name('task.list');
+        Route::put('/update-task/{task}', [TaskController::class, 'update'])->name('task.update');
+
 
 
         Route::post('/create-performance-review', [PerformanceReviewController::class, 'store'])->name('performanceReview.store');
