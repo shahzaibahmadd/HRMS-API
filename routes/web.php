@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LogViewer\LogViewerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/logs/errors', [LogViewerController::class, 'errorLogs'])->name('logs.errors');
+Route::get('/logs/requests', [LogViewerController::class, 'requestLogs'])->name('logs.requests');
+Route::get('/logs/apis', [LogViewerController::class, 'apiLogs'])->name('logs.apis');

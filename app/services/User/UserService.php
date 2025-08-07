@@ -60,7 +60,7 @@ class UserService
             ])
             ->thenReturn();
 
-        $perPage = $request->input('per_page', 100);
+        $perPage = $request->input('per_page', 10);
         return $query->paginate($perPage);
     }
     public function listDeletedUsers(Request $request)
