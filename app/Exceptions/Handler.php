@@ -3,8 +3,8 @@
 namespace App\Exceptions;
 
 use App\Helpers\ResponseHelper;
-use App\services\ErrorLogging\ErrorLoggingService;
-use http\Client\Request;
+use App\Services\ErrorLogging\ErrorLoggingService;
+use Http\Client\Request;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Validation\ValidationException;

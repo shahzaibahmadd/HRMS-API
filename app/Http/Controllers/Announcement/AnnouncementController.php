@@ -7,7 +7,7 @@ use App\Helpers\ResponseHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Announcement\StoreAnnouncementRequest;
 use App\Http\Resources\Announcement\AnnouncementResource;
-use App\services\Announcement\AnnouncementService;
+use App\Services\Announcement\AnnouncementService;
 use Illuminate\Http\Request;
 
 class AnnouncementController extends Controller

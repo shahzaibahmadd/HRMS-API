@@ -1,11 +1,11 @@
 <?php
 
-namespace App\services\PerformanceReview;
+namespace App\Services\PerformanceReview;
 
 use App\DTOs\PerformanceReview\PerformanceReviewDTO;
 use App\Filters\PerformanceReview\PerformanceReviewFilter;
 use App\Models\PerformanceReview;
-use App\services\ErrorLogging\ErrorLoggingService;
+use App\Services\ErrorLogging\ErrorLoggingService;
 use Illuminate\Http\Request;
 use Illuminate\Pipeline\Pipeline;
 

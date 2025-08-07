@@ -1,11 +1,11 @@
 <?php
 
-namespace App\services\Announcement;
+namespace App\Services\Announcement;
 
 use App\DTOs\Announcement\AnnouncementDTO;
 use App\Events\Announcement\AnnouncementCreated;
 use App\Models\Announcement;
-use App\services\ErrorLogging\ErrorLoggingService;
+use App\Services\ErrorLogging\ErrorLoggingService;
 
 class AnnouncementService
 {

@@ -6,7 +6,7 @@ use App\Helpers\ResponseHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Payroll;
 use App\Models\Payslip;
-use App\services\Payslip\PayslipService;
+use App\Services\Payslip\PayslipService;
 use Illuminate\Http\Request;
 
 class PayslipController extends Controller

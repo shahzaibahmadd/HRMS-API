@@ -1,12 +1,12 @@
 <?php
 
-namespace App\services\Task;
+namespace App\Services\Task;
 use app\DTOs\Task\TaskDTO;
 use App\Filters\Task\TaskFilter;
 use App\Http\Requests\Task\CreateTaskRequest;
 use App\models\Task;
 
-use App\services\ErrorLogging\ErrorLoggingService;
+use App\Services\ErrorLogging\ErrorLoggingService;
 use Illuminate\Http\Request;
 use Illuminate\Pipeline\Pipeline;
 
