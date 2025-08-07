@@ -2,6 +2,7 @@
 
 namespace App\Services\Task;
 use app\DTOs\Task\TaskDTO;
+use App\DTOs\Task\UpdateTaskDTO;
 use App\Filters\Task\TaskFilter;
 use App\Http\Requests\Task\CreateTaskRequest;
 use App\models\Task;
@@ -24,20 +25,16 @@ class TaskService
       }
   }
 
-  public function update(Task $task, TaskDTO $dto): ?Task
-  {
-
-      try{
-
-          $task->update($dto->toArray());
-
-          return $task;
-      }catch (\Throwable $e){
-          ErrorLoggingService::log($e);
-          return null;
-      }
-  }
-
+    public function update(Task $task, UpdateTaskDTO $dto): ?Task
+    {
+        try {
+            $task->update($dto->toArray());
+            return $task;
+        } catch (\Throwable $e) {
+            ErrorLoggingService::log($e);
+            return null;
+        }
+    }
   public function delete(Task $task): void{
 
       try {
