@@ -9,6 +9,7 @@ use App\Http\Controllers\{Announcement\AnnouncementController,
     PerformanceReview\PerformanceReviewController,
     Task\TaskController,
     User\UserController};
+use App\Helpers\ResponseHelper;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/register', [AuthController::class, 'register'])->name('register');
@@ -60,7 +61,7 @@ Route::middleware(['auth:api'])->group(function () {
 
         Route::post('/create-task', [TaskController::class, 'store'])->name('task.store');
         Route::get('/list-task', [TaskController::class, 'index'])->name('task.list');
-        Route::put('/update-task/{task}', [TaskController::class, 'update'])->name('task.update');
+        Route::put('/x/{task}', [TaskController::class, 'update'])->name('task.update');
 
 
 
@@ -76,3 +77,9 @@ Route::middleware(['auth:api'])->group(function () {
     Route::post('/announcements', [AnnouncementController::class, 'store'])->name('announcements.store');
 
 });
+
+
+
+Route::any('/{any}', function () {
+    return ResponseHelper::error(404, 'Invalid Route or Endpoint');
+})->where('any', '.*');
